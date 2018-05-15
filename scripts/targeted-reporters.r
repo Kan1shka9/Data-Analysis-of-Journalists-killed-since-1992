@@ -1,0 +1,5 @@
+setwd("../dataset/")
+getwd()
+a <- read.csv("cpj-database-mod.csv")
+View(a)
+plot(table(a$Nationality), type = "l", xlab = "Nationality", ylab = "Scale", main = "Reporters of which nationality are targeted the most?", col = "violetred2")

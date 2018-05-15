@@ -175,6 +175,16 @@ pie(local_and_foreign, main = "Are foreign journalists targeted more than local 
 
 ![](images/visual/8.png)
 
+`targeted-reporters.r`
+
+```r
+setwd("../dataset/")
+getwd()
+a <- read.csv("cpj-database-mod.csv")
+View(a)
+plot(table(a$Nationality), type = "l", xlab = "Nationality", ylab = "Scale", main = "Reporters of which nationality are targeted the most?", col = "violetred2")
+```
+
 ```r
 > setwd("~/Desktop/Data-Analysis-of-Journalists-killed-since-1992/scripts")
 > source("targeted-reporters.r")

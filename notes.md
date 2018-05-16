@@ -1,4 +1,13 @@
-# Journalists that have been killed since 1992, compiled by CPJ
+# :gun: Journalists that have been killed since 1992, compiled by CPJ
+
+###### Index
+
+- [Data Set Source](#data-set-source)
+- [Cleaning](#cleaning)
+- [Statistics of the data](#statistics-of-the-data)
+- [Visualization](#visualization)
+
+----
 
 ###### Data Set Source
 
@@ -72,6 +81,27 @@
 ![](images/clean/8.png)
 
 ![](images/clean/9.png)
+
+----
+
+###### Statistics of the data
+
+```r
+> a <- read.csv("cpj-database-mod.csv", na.strings = c("", NA), stringsAsFactors = FALSE)
+> View(a)
+> summary(a)
+     Date               Name               Sex            Country.Killed     Organization       Nationality           Medium              Job              Coverage        
+ Length:785         Length:785         Length:785         Length:785         Length:785         Length:785         Length:785         Length:785         Length:785        
+ Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+  Freelance         Local.Foreign      Source.of.Fire     Type.of.Death      Impunity..for.Murder. Taken.Captive       Threatened          Tortured        
+ Length:785         Length:785         Length:785         Length:785         Length:785            Length:785         Length:785         Length:785        
+ Class :character   Class :character   Class :character   Class :character   Class :character      Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character      Mode  :character   Mode  :character   Mode  :character  
+> 
+```
+
+![](images/visual/13.png)
 
 ----
 
@@ -192,7 +222,7 @@ plot(table(a$Nationality), type = "l", xlab = "Nationality", ylab = "Scale", mai
 
 ![](images/visual/9.png)
 
-- **Statistics related to cause of death** - `Uses a user defined function`
+- **Statistics related to cause of death**
 
 ```r
 > setwd("~/Desktop/Data-Analysis-of-Journalists-killed-since-1992/dataset/")
@@ -281,3 +311,7 @@ deathtype = function(dataset)
 ```
 
 ![](images/visual/12.png)
+
+----
+
+EOF

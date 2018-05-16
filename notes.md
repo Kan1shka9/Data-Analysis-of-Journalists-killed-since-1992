@@ -191,3 +191,93 @@ plot(table(a$Nationality), type = "l", xlab = "Nationality", ylab = "Scale", mai
 ```
 
 ![](images/visual/9.png)
+
+- **Statistics related to cause of death**
+
+```r
+> setwd("~/Desktop/Data-Analysis-of-Journalists-killed-since-1992/dataset/")
+> getwd()
+[1] "/Users/kanishka/Desktop/Data-Analysis-of-Journalists-killed-since-1992/dataset"
+> a <- read.csv("cpj-database-mod.csv", na.strings = c("", NA), stringsAsFactors = FALSE)
+> View(a)
+> source("../scripts/death.r")
+> deathtype(a)
+[1] "Number of deaths by Murders are: "
+[1] 735
+[1] "Number of deaths by Crossfires are: "
+[1] 19
+[1] "Number of deaths by Dangerous Assignment are: "
+[1] 11
+[1] "Number of deaths by Fire are: "
+[1] 1
+[1] "Number of deaths by Unknown causes are: "
+[1] 19
+> td <- c("Murder", "CrossFire", "Dangerous Assignment", "Fire", "Unknown cause")
+> count <- c(735, 19, 11, 1, 19)
+> deathcountdf <- data.frame(td, count)
+> deathcountdf
+                    td count
+1               Murder   735
+2            CrossFire    19
+3 Dangerous Assignment    11
+4                 Fire     1
+5        Unknown cause    19
+> barplot(deathcountdf$count, names.arg = deathcountdf$td, xlab = "Death Type", ylab = "Count", main = "Statistics related to cause of death", col = c("deeppink3", "cyan4", "yellowgreen", "plum1", "azure"))
+>
+```
+
+![](images/visual/10.png)
+
+![](images/visual/11.png)
+
+`death.r`
+
+```r
+deathtype = function(dataset)
+{
+  
+  countOfMurder <- 0
+  countOfCrossfire <- 0
+  countOfDangerousAssignment <- 0
+  countOfSuspectedSourceofFire <- 0
+  countOfNA <- 0
+  
+  for (i in dataset$Type.of.Death)
+  {
+    if (i == "Murder")
+    {
+      countOfMurder = countOfMurder + 1
+    }
+    else if (i == "Crossfire")
+    {
+      countOfCrossfire = countOfCrossfire + 1
+    }
+    else if (i == "Dangerous Assignment")
+    {
+      countOfDangerousAssignment = countOfDangerousAssignment + 1
+    }
+    else if (i == "\nSuspected Source of Fire:")
+    {
+      countOfSuspectedSourceofFire = countOfSuspectedSourceofFire + 1
+    }
+    else
+    {
+      countOfNA = countOfNA + 1 
+    }
+  }
+
+  print("Number of deaths by Murders are: ")
+  print(countOfMurder)
+  print("Number of deaths by Crossfires are: ")
+  print(countOfCrossfire)
+  print("Number of deaths by Dangerous Assignment are: ")
+  print(countOfDangerousAssignment)
+  print("Number of deaths by Fire are: ")
+  print(countOfSuspectedSourceofFire)
+  print("Number of deaths by Unknown causes are: ")
+  print(countOfNA)
+  
+}
+```
+
+![](images/visual/12.png)

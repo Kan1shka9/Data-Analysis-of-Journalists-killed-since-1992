@@ -192,7 +192,7 @@ plot(table(a$Nationality), type = "l", xlab = "Nationality", ylab = "Scale", mai
 
 ![](images/visual/9.png)
 
-- **Statistics related to cause of death**
+- **Statistics related to cause of death** - `Uses a user defined function`
 
 ```r
 > setwd("~/Desktop/Data-Analysis-of-Journalists-killed-since-1992/dataset/")
